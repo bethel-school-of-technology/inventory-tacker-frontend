@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// import React from "react";
+// import { Link } from "react-dom";
 
-const Header = () => (
-  <div className="text-center">
-    <h1>
-      <a href="/#/"> Money Time</a>
-    </h1>
+// const Header = () => (
+//   <div className="text-center">
+//     <h1>
+//       <a href="/#/"> Money Time</a>
+//     </h1>
 
-    <ul className="nav-menu">
-      <li className="lead">
-        <Link to="/inventory">Inventory</Link>
-      </li>
-    </ul>
-  </div>
-);
+//     <ul className="nav-menu">
+//       <li className="lead">
+//         <Link to="/inventory">Inventory</Link>
+//       </li>
+//     </ul>
+//   </div>
+// );
 
-export default Header;
+// export default Header;
