@@ -33,3 +33,14 @@
 // // }
 
 // export default Home;
+import React from 'react';
+import '../App.css';
+
+const Home = () => (
+	<div>
+		<h1>Money Mower Staff and Inventory Tracker</h1>
+		<img src={require('../images/moneymower.jpg')} width="650px" alt="Money Mower" />
+	</div>
+);
+
+export default Home;
