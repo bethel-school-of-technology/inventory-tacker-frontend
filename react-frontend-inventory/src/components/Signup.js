@@ -70,6 +70,7 @@ class Signup extends Component {
 		return (
 			<form id="signup" name="signup" method="POST" onSubmit={this.handleSubmit}>
 				<h1>All Money Mower Staff - Please sign up</h1>
+				<img src={require('../images/man3.png')} class="right" width="140px" alt="man" />
 				<div>
 					<label>Employee Number:</label>
 					<input

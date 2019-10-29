@@ -44,6 +44,15 @@ button:disabled {
 	color: #aaa;
 	cursor: auto;
 }
+.butupdate:hover {
+	background-color: darkkhaki;
+	color: white;
+}
+.butupdate:disabled {
+	background-color: #eee;
+	color: #aaa;
+	cursor: auto;
+}
 
 /* Navigation link styles */
 nav a {
@@ -68,7 +77,7 @@ nav a.active {
 }
 
 #signup input {
-	margin-left: 13em;
+	margin-left: 9em;
 }
 
 #signup label {
@@ -164,6 +173,22 @@ nav a.active {
 	margin-right: 0;
 	border-radius: 4px 0 0 4px;
 }
+.postbadge {
+	display: inline-block;
+	font-size: small;
+	color: white;
+	padding: 0.8em 0.7em 0 0.7em;
+	background-color: rgb(187, 186, 186);
+	line-height: 1em;
+	position: relative;
+	left: -1px;
+	top: -4px;
+	height: 1.8em;
+	min-width: 16px;
+	text-align: right;
+	margin-right: .8em;
+	border-radius: 0 4px 4px 0;
+}
 .postbadgeB {
 	display: inline-block;
 	font-size: small;
@@ -180,12 +205,12 @@ nav a.active {
 	margin-right: .8em;
 	border-radius: 0 4px 4px 0;
 }
-.postbadge {
+.postbadgeC {
 	display: inline-block;
 	font-size: small;
 	color: white;
 	padding: 0.8em 0.7em 0 0.7em;
-	background-color: rgb(187, 186, 186);
+	background-color: #3f3e09;
 	line-height: 1em;
 	position: relative;
 	left: -1px;
@@ -193,8 +218,8 @@ nav a.active {
 	height: 1.8em;
 	min-width: 16px;
 	text-align: right;
-	margin-right: .8em;
-	border-radius: 0 4px 4px 0;
+	margin-right: 0;
+	border-radius: 4px 0 0 4px;
 }
 button.del {
 	font-family: Arial;
@@ -285,4 +310,7 @@ ul {
 .right {
 	float: right;
 	margin-right: 50em;
+}
+.red {
+	color: darkred;
 }

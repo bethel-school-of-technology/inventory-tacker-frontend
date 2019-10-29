@@ -21,6 +21,8 @@ import Signup from './components/Signup';
 import Inventory from './components/Inventory';
 import Logout from './components/Logout';
 import Admin from './components/Admin';
+import EditInventory from './components/EditInventory';
+import EditUser from './components/EditUser';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const App = () => (
@@ -41,6 +43,8 @@ const App = () => (
 			<Route path="/Profile" component={Profile} />
 			<Route path="/Signup" component={Signup} />
 			<Route path="/Inventory" component={Inventory} />
+			<Route path="/EditInventory" component={EditInventory} />
+			<Route path="/EditUser" component={EditUser} />
 			<Route path="/Admin" component={Admin} />
 			<Route path="/Logout" component={Logout} />
 		</div>
