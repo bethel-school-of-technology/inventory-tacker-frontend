@@ -38,8 +38,9 @@ import '../App.css';
 
 const Home = () => (
 	<div>
-		<h1>Money Mower Staff and Inventory Tracker</h1>
-		<img src={require('../images/moneymower.jpg')} width="650px" alt="Money Mower" />
+		<h2>Money Mower Staff and Inventory Tracker</h2>
+		<img src={require('../images/moneymower.jpg')} width="auto" alt="Money Mower" />
+		<hr />
 	</div>
 );
 

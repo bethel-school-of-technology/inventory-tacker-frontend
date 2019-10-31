@@ -45,6 +45,7 @@ const Profile = () => (
 	<div>
 		<img src={require('../images/avatar.png')} height="45px" alt="Avatar" />
 		<h1>Your Employee Information:</h1>
+		<hr />
 	</div>
 );
 

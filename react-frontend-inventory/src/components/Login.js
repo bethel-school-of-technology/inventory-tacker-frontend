@@ -130,6 +130,7 @@ class Login extends Component {
 						Submit
 					</button>
 				</div>
+				<hr />
 			</form>
 		);
 	}

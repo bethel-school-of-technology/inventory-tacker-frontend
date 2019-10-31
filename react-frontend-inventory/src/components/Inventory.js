@@ -78,50 +78,60 @@ class Inventory extends Component {
 
 	render() {
 		return (
-			<form id="posts" name="inventory" method="POST" onSubmit={this.handleSubmit}>
-				<div>
-					<img src={require('../images/mower2.png')} class="right" height="150px" alt="Mower" />
-					<h1>New Stock Item</h1>
-					<label>Mower Name:</label>
-					<input
-						type="text"
-						name="MowerName"
-						value={this.state.MowerName}
-						onChange={this.handleMowerChange}
-						required
-					/>
+			<div class="grid">
+				<div class="col-2-3">
+					<form id="posts" name="inventory" method="POST" onSubmit={this.handleSubmit}>
+						<div>
+							<h2>New Stock Item</h2>
+							<label>Mower Name:</label>
+							<input
+								type="text"
+								name="MowerName"
+								value={this.state.MowerName}
+								onChange={this.handleMowerChange}
+								required
+							/>
+						</div>
+						<div>
+							<label>Mower Type:</label>
+							<input
+								type="text"
+								name="MowerType"
+								value={this.state.MowerType}
+								onChange={this.handleTypeChange}
+								required
+							/>
+						</div>
+						<div>
+							<label>Inventory:</label>
+							<input
+								type="number"
+								name="Inventory"
+								value={this.state.Inventory}
+								onChange={this.handleInventoryChange}
+								required
+							/>
+						</div>
+						<br />
+						<div>
+							<button type="submit" value="Submit">
+								Submit
+							</button>
+						</div>
+					</form>
 				</div>
-				<div>
-					<label>Mower Type:</label>
-					<input
-						type="text"
-						name="MowerType"
-						value={this.state.MowerType}
-						onChange={this.handleTypeChange}
-						required
-					/>
-				</div>
-				<div>
-					<label>Inventory:</label>
-					<input
-						type="number"
-						name="Inventory"
-						value={this.state.Inventory}
-						onChange={this.handleInventoryChange}
-						required
-					/>
+				<div class="col-1-3">
+					<img src={require('../images/mower2.png')} width="auto" alt="Mower" />
 				</div>
 				<br />
+				<br />
+				<br />
+				<br />
+				<hr />
 				<div>
-					<button type="submit" value="Submit">
-						Submit
-					</button>
-				</div>
-				<div>
-					<hr />
 					<h1>Inventory List:</h1>
 				</div>
-			</form>
+			</div>
 		);
 	}
 }

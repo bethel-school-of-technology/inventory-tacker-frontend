@@ -68,77 +68,84 @@ class Signup extends Component {
 
 	render() {
 		return (
-			<form id="signup" name="signup" method="POST" onSubmit={this.handleSubmit}>
-				<h1>All Money Mower Staff - Please sign up</h1>
-				<img src={require('../images/man3.png')} class="right" width="140px" alt="man" />
-				<div>
-					<label>Employee Number:</label>
-					<input
-						type="text"
-						name="employeeNumber"
-						value={this.state.EmployeeNumber}
-						onChange={this.handleNumberChange}
-						required
-					/>
+			<div class="grid">
+				<h2>All Money Mower Staff - Please sign up</h2>
+				<div class="col-1-3">
+					<form id="signup" name="signup" method="POST" onSubmit={this.handleSubmit}>
+						<div>
+							<label>Employee #:</label>
+							<input
+								type="text"
+								name="employeeNumber"
+								value={this.state.EmployeeNumber}
+								onChange={this.handleNumberChange}
+								required
+							/>
+						</div>
+						<div>
+							<label>First Name:</label>
+							<input
+								type="text"
+								name="name"
+								value={this.state.FirstName}
+								onChange={this.handleFirstChange}
+								required
+							/>
+						</div>
+						<div>
+							<label>Last Name:</label>
+							<input
+								type="text"
+								name="name"
+								value={this.state.LastName}
+								onChange={this.handleLastChange}
+								required
+							/>
+						</div>
+						<div>
+							<label>Email:</label>
+							<input
+								type="email"
+								name="email"
+								placeholder="me@example.com"
+								value={this.state.Email}
+								onChange={this.handleEmailChange}
+								required
+							/>
+						</div>
+						<div>
+							<label>Username:</label>
+							<input
+								type="text"
+								name="username"
+								value={this.state.Username}
+								onChange={this.handleUserChange}
+								required
+							/>
+						</div>
+						<div>
+							<label>Password:</label>
+							<input
+								type="password"
+								name="password"
+								value={this.state.Password}
+								onChange={this.handlePasswordChange}
+								required
+							/>
+						</div>
+						<br />
+						<div>
+							<button type="submit" value="Submit">
+								Submit
+							</button>
+						</div>
+					</form>
 				</div>
-				<div>
-					<label>First Name:</label>
-					<input
-						type="text"
-						name="name"
-						value={this.state.FirstName}
-						onChange={this.handleFirstChange}
-						required
-					/>
+				<div class="col-2-3">
+					<img src={require('../images/man3.png')} width="auto" alt="man" />
 				</div>
-				<div>
-					<label>Last Name:</label>
-					<input
-						type="text"
-						name="name"
-						value={this.state.LastName}
-						onChange={this.handleLastChange}
-						required
-					/>
-				</div>
-				<div>
-					<label>Email:</label>
-					<input
-						type="email"
-						name="email"
-						placeholder="me@example.com"
-						value={this.state.Email}
-						onChange={this.handleEmailChange}
-						required
-					/>
-				</div>
-				<div>
-					<label>Username:</label>
-					<input
-						type="text"
-						name="username"
-						value={this.state.Username}
-						onChange={this.handleUserChange}
-						required
-					/>
-				</div>
-				<div>
-					<label>Password:</label>
-					<input
-						type="password"
-						name="password"
-						value={this.state.Password}
-						onChange={this.handlePasswordChange}
-						required
-					/>
-				</div>
-				<br />
-				<div>
-					<button type="submit" value="Submit">
-						Submit
-					</button>
-				</div>
-			</form>
+				<hr />
+			</div>
 		);
 	}
 }
