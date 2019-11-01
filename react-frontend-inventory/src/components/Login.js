@@ -1,75 +1,101 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import '../App.css';
 
-/*class Login extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			UserName: '',
+			Username: '',
 			Password: ''
 		};
-		this.handleUserChange = this.handleUserChange.bind(this);
-		this.handlePasswordChange = this.handlePasswordChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.onChangeUsername = this.onChangeUsername.bind(this);
+		this.onChangePassword = this.onChangePassword.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 
-	handleUserChange = (event) => {
+	onChangeUsername(event) {
 		this.setState({
 			Username: event.target.value
 		});
-	};
+	}
 
-	handlePasswordChange = (event) => {
+	onChangePassword(event) {
 		this.setState({
 			Password: event.target.value
 		});
-	};
-
-	handleSubmit = (event) => {
-		axios.post('http://localhost:3001/users/login', {
-			Username: JSON.stringify(this.state.Username),
-			Password: JSON.stringify(this.state.Password)
-		});
+	}
+	onSubmit = async (event) => {
 		event.preventDefault();
+		try {
+			await (this.state.Username, this.state.Password);
+			alert('login successfull!');
+			this.props.history.push('/login');
+		} catch (event) {
+			alert(event.message);
+		}
+		const { Username, Password } = this.state;
+		const apiUrl = 'http://localhost:3001/users/login';
+		return axios.post(apiUrl, {
+			Username,
+			Password
+		});
 	};
+	onChange(key, event) {
+		this.setState({
+			[key]: event.target.value
+		});
+	}
+
+	/*onSubmit(event) {
+		event.preventDefault();
+		const login = {
+			Username: this.state.Username,
+			Password: this.state.Password
+		};
+		alert(` ${this.state.Username} ${this.state.Password}`);
+		axios.post('http://localhost:3001/users/', login).then((res) => console.log(res.data));
+		this.setState({
+			Username: '',
+			Password: ''
+		});
+	}*/
 
 	render() {
+		const { Username, Password } = this.state;
 		return (
-			<form id="login" name="login" method="POST" onSubmit={this.handleSubmit}>
-				<div>
-					<h1>Please Login</h1>
-					<label>Username:</label>
-					<input
-						type="text"
-						name="username"
-						value={this.state.Username}
-						onChange={this.handleUserChange}
-						required
-					/>
-				</div>
-				<div>
-					<label>Password:</label>
-					<input
-						type="password"
-						name="password"
-						value={this.state.Password}
-						onChange={this.handlePasswordChange}
-						required
-					/>
-				</div>
-				<br />
-				<div>
-					<button type="submit" value="Submit">
-						Submit
-					</button>
-				</div>
-			</form>
+			<React.Fragment>
+				<form id="login" name="login" method="POST" onSubmit={this.onSubmit}>
+					<div>
+						<h2>Please Login</h2>
+						<label>Username:</label>
+						<input type="text" name="username" value={Username} onChange={this.onChangeUsername} required />
+					</div>
+					<div>
+						<label>Password:</label>
+						<input
+							type="password"
+							name="password"
+							value={Password}
+							onChange={this.onChangePassword}
+							required
+						/>
+					</div>
+					<br />
+					<div>
+						<button type="submit" value="Submit">
+							Submit
+						</button>
+						<br />
+						<hr />
+					</div>
+				</form>
+			</React.Fragment>
 		);
 	}
 }
-*/
+/* 
 class Login extends Component {
 	constructor(props) {
 		super(props);
@@ -136,4 +162,5 @@ class Login extends Component {
 	}
 }
 
+*/
 export default Login;

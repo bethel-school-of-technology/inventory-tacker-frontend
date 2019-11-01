@@ -129,7 +129,7 @@ class Inventory extends Component {
 				<br />
 				<hr />
 				<div>
-					<h1>Inventory List:</h1>
+					<h2>Inventory List:</h2>
 				</div>
 			</div>
 		);

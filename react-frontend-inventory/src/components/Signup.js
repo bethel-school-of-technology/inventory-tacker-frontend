@@ -86,7 +86,7 @@ class Signup extends Component {
 							<label>First Name:</label>
 							<input
 								type="text"
-								name="name"
+								name="firstName"
 								value={this.state.FirstName}
 								onChange={this.handleFirstChange}
 								required
@@ -96,7 +96,7 @@ class Signup extends Component {
 							<label>Last Name:</label>
 							<input
 								type="text"
-								name="name"
+								name="lastName"
 								value={this.state.LastName}
 								onChange={this.handleLastChange}
 								required
