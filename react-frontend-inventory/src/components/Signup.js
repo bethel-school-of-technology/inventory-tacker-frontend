@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 class Signup extends Component {
@@ -10,7 +11,7 @@ class Signup extends Component {
 			FirstName: '',
 			LastName: '',
 			Email: '',
-			UserName: '',
+			Username: '',
 			Password: ''
 		};
 		this.handleNumberChange = this.handleNumberChange.bind(this);
@@ -58,90 +59,115 @@ class Signup extends Component {
 		});
 	};
 
-	handleSubmit = (event) => {
-		alert(
-			`${this.state.EmployeeNumber} ${this.state.FirstName} ${this.state.LastName} ${this.state.Email} ${this
-				.state.Username} ${this.state.Password}`
-		);
+	handleSubmit = async (event) => {
 		event.preventDefault();
+		try {
+			await (this.state.EmployeeNumber,
+			this.state.FirstName,
+			this.state.LastName,
+			this.state.Email,
+			this.state.Username,
+			this.state.Password);
+			alert('login successfull!');
+			this.props.history.push('/signup');
+		} catch (event) {
+			alert(event.message);
+		}
+		const { EmployeeNumber, FirstName, LastName, Email, Username, Password } = this.state;
+		const apiUrl = 'http://localhost:3001/users/signup';
+		return axios.post(apiUrl, {
+			EmployeeNumber,
+			FirstName,
+			LastName,
+			Email,
+			Username,
+			Password
+		});
 	};
+	handleChange(key, event) {
+		this.setState({
+			[key]: event.target.value
+		});
+	}
 
 	render() {
 		return (
-			<div class="grid">
+			<div className="grid">
 				<h2>All Money Mower Staff - Please sign up</h2>
-				<div class="col-1-3">
-					<form id="signup" name="signup" method="POST" onSubmit={this.handleSubmit}>
-						<div>
-							<label>Employee #:</label>
-							<input
-								type="text"
-								name="employeeNumber"
-								value={this.state.EmployeeNumber}
-								onChange={this.handleNumberChange}
-								required
-							/>
-						</div>
-						<div>
-							<label>First Name:</label>
-							<input
-								type="text"
-								name="firstName"
-								value={this.state.FirstName}
-								onChange={this.handleFirstChange}
-								required
-							/>
-						</div>
-						<div>
-							<label>Last Name:</label>
-							<input
-								type="text"
-								name="lastName"
-								value={this.state.LastName}
-								onChange={this.handleLastChange}
-								required
-							/>
-						</div>
-						<div>
-							<label>Email:</label>
-							<input
-								type="email"
-								name="email"
-								placeholder="me@example.com"
-								value={this.state.Email}
-								onChange={this.handleEmailChange}
-								required
-							/>
-						</div>
-						<div>
-							<label>Username:</label>
-							<input
-								type="text"
-								name="username"
-								value={this.state.Username}
-								onChange={this.handleUserChange}
-								required
-							/>
-						</div>
-						<div>
-							<label>Password:</label>
-							<input
-								type="password"
-								name="password"
-								value={this.state.Password}
-								onChange={this.handlePasswordChange}
-								required
-							/>
-						</div>
-						<br />
-						<div>
-							<button type="submit" value="Submit">
-								Submit
-							</button>
-						</div>
-					</form>
+				<div className="col-1-3">
+					<React.Fragment>
+						<form id="signup" name="signup" method="POST" onSubmit={this.handleSubmit}>
+							<div>
+								<label>Employee #:</label>
+								<input
+									type="text"
+									name="EmployeeNumber"
+									value={this.state.EmployeeNumber}
+									onChange={this.handleNumberChange}
+									required
+								/>
+							</div>
+							<div>
+								<label>First Name:</label>
+								<input
+									type="text"
+									name="FirstName"
+									value={this.state.FirstName}
+									onChange={this.handleFirstChange}
+									required
+								/>
+							</div>
+							<div>
+								<label>Last Name:</label>
+								<input
+									type="text"
+									name="LastName"
+									value={this.state.LastName}
+									onChange={this.handleLastChange}
+									required
+								/>
+							</div>
+							<div>
+								<label>Email:</label>
+								<input
+									type="email"
+									name="Email"
+									placeholder="me@example.com"
+									value={this.state.Email}
+									onChange={this.handleEmailChange}
+									required
+								/>
+							</div>
+							<div>
+								<label>Username:</label>
+								<input
+									type="text"
+									name="Username"
+									value={this.state.Username}
+									onChange={this.handleUserChange}
+									required
+								/>
+							</div>
+							<div>
+								<label>Password:</label>
+								<input
+									type="password"
+									name="Password"
+									value={this.state.Password}
+									onChange={this.handlePasswordChange}
+									required
+								/>
+							</div>
+							<br />
+							<div>
+								<button type="submit" value="Submit">
+									Submit
+								</button>
+							</div>
+						</form>
+					</React.Fragment>
 				</div>
-				<div class="col-2-3">
+				<div className="col-2-3">
 					<img src={require('../images/man3.png')} width="auto" alt="man" />
 				</div>
 				<hr />

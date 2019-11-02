@@ -47,21 +47,6 @@ class Login extends Component {
 			[key]: event.target.value
 		});
 	}
-
-	/*onSubmit(event) {
-		event.preventDefault();
-		const login = {
-			Username: this.state.Username,
-			Password: this.state.Password
-		};
-		alert(` ${this.state.Username} ${this.state.Password}`);
-		axios.post('http://localhost:3001/users/', login).then((res) => console.log(res.data));
-		this.setState({
-			Username: '',
-			Password: ''
-		});
-	}*/
-
 	render() {
 		const { Username, Password } = this.state;
 		return (
