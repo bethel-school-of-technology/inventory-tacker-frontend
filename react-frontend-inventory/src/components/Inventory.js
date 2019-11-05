@@ -1,43 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import '../App.css';
-/*const Inventory = () => (
-	<div>
-		<h1>Inventory:</h1>
-	</div>
-);
+//import Cookie from 'js-cookie';
 
-// import axios from "axios";
-
-/*class Inventory extends Component {
-	constructor() {
-		super();
-		this.state = { Inventory: [] };
-	}
-	componentDidMount() {
-		fetch("http://localhost:3001/inventory")
-			.then((res) => {
-				console.log(res);
-				return res.json();
-			})
-			.then((users) => {
-				console.log(users);
-				this.setState({ users });
-			});
-	}
-	render() {
-		return (
-			<div className="App">
-				<h1>Inventory</h1>
-				{this.state.users.map((user) => (
-					<div key={MowerId}>
-						: {user.name} Password: {user.password}
-					</div>
-				))}
-			</div>
-		);
-	}
-}
-*/
 class Inventory extends Component {
 	constructor(props) {
 		super(props);
@@ -71,56 +36,79 @@ class Inventory extends Component {
 		});
 	};
 
-	handleSubmit = (event) => {
-		alert(` ${this.state.MowerName} ${this.state.MowerType} ${this.state.Inventory}`);
+	handleSubmit = async (event) => {
 		event.preventDefault();
+		//Cookie.get('token');
+		//headers: {
+		//	Authorization: `JWT ${localStorage.getItem('JWT')}`
+		//};
+		try {
+			await (this.state.MowerName, this.state.MowerType, this.state.Inventory);
+			alert('New Mower added to Inventory.');
+			this.props.history.push('/inventory');
+		} catch (event) {
+			alert(event.message);
+		}
+		const { MowerName, MowerType, Inventory } = this.state;
+		const apiUrl = 'http://localhost:3001/inventory';
+		return axios.post(apiUrl, {
+			MowerName,
+			MowerType,
+			Inventory
+		});
 	};
-
+	handleChange(key, event) {
+		this.setState({
+			[key]: event.target.value
+		});
+	}
 	render() {
 		return (
-			<div class="grid">
-				<div class="col-2-3">
-					<form id="posts" name="inventory" method="POST" onSubmit={this.handleSubmit}>
-						<div>
-							<h2>New Stock Item</h2>
-							<label>Mower Name:</label>
-							<input
-								type="text"
-								name="MowerName"
-								value={this.state.MowerName}
-								onChange={this.handleMowerChange}
-								required
-							/>
-						</div>
-						<div>
-							<label>Mower Type:</label>
-							<input
-								type="text"
-								name="MowerType"
-								value={this.state.MowerType}
-								onChange={this.handleTypeChange}
-								required
-							/>
-						</div>
-						<div>
-							<label>Inventory:</label>
-							<input
-								type="number"
-								name="Inventory"
-								value={this.state.Inventory}
-								onChange={this.handleInventoryChange}
-								required
-							/>
-						</div>
-						<br />
-						<div>
-							<button type="submit" value="Submit">
-								Submit
-							</button>
-						</div>
-					</form>
+			<div className="grid">
+				<div className="col-2-3">
+					<React.Fragment>
+						<form id="posts" name="inventory" method="POST" onSubmit={this.handleSubmit}>
+							<div>
+								<h2>New Stock Item</h2>
+								<label>Mower Name:</label>
+								<input
+									type="text"
+									name="MowerName"
+									value={this.state.MowerName}
+									onChange={this.handleMowerChange}
+									required
+								/>
+							</div>
+							<div>
+								<label>Mower Type:</label>
+								<input
+									type="text"
+									name="MowerType"
+									value={this.state.MowerType}
+									onChange={this.handleTypeChange}
+									required
+								/>
+							</div>
+							<div>
+								<label>Inventory:</label>
+								<input
+									type="number"
+									name="Inventory"
+									value={this.state.Inventory}
+									onChange={this.handleInventoryChange}
+									required
+								/>
+							</div>
+							<br />
+							<div>
+								<button type="submit" value="Submit">
+									Submit
+								</button>
+							</div>
+						</form>
+					</React.Fragment>
 				</div>
-				<div class="col-1-3">
+				<div className="col-1-3">
 					<img src={require('../images/mower2.png')} width="auto" alt="Mower" />
 				</div>
 				<br />

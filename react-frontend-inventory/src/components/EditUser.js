@@ -22,7 +22,7 @@ class editUser extends Component {
 	render() {
 		return (
 			<form name="editUser" method="POST" onSubmit={this.handleSubmit}>
-				<button class="postdel" type="submit" value="delete">
+				<button className="postdel" type="submit" value="delete">
 					Delete Employee
 				</button>
 			</form>

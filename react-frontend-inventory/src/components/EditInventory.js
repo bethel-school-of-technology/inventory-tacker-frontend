@@ -27,7 +27,7 @@ class editInventory extends Component {
 		return (
 			<form id="inventory" name="inventory" method="POST" onSubmit={this.handleSubmit}>
 				<div>
-					<h1>Update Inventory</h1>
+					<h2>Update Inventory</h2>
 					<label>Current Inventory:</label>
 					<input
 						type="number"
