@@ -1,7 +1,13 @@
+<<<<<<< Updated upstream
 import React, { Component } from 'react';
 import axios from 'axios';
 //import React from 'react';
 import '../App.css';
+=======
+//import React, {Component} from 'react';
+import React from "react";
+import "../App.css";
+>>>>>>> Stashed changes
 
 /*class Profile extends Component {
 	constructor(props) {
@@ -42,6 +48,7 @@ render(){
 };
 */
 
+<<<<<<< Updated upstream
 class Profile extends Component {
 	constructor(props) {
 		super(props);
@@ -76,6 +83,23 @@ class Profile extends Component {
 			})
 			.catch((error) => this.setState({ error, isLoading: false }));
 	}
+=======
+const Profile = () => (
+<<<<<<< Updated upstream
+	<div>
+		<img src={require('../images/avatar.png')} height="45px" alt="Avatar" />
+		<p>Your Employee Information:</p>
+		<hr />
+	</div>
+=======
+  <div>
+    <img src={require("../images/avatar.png")} height="45px" alt="Avatar" />
+    <h1>Your Employee Information:</h1>
+    <hr />
+  </div>
+>>>>>>> Stashed changes
+);
+>>>>>>> Stashed changes
 
 	render() {
 		const { isLoading, users } = this.state;
