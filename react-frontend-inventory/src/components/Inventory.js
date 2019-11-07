@@ -73,7 +73,7 @@ class Inventory extends Component {
 								<label>Mower Name:</label>
 								<input
 									type="text"
-									name="MowerName"
+									name="title"
 									value={this.state.MowerName}
 									onChange={this.handleMowerChange}
 									required
@@ -83,7 +83,7 @@ class Inventory extends Component {
 								<label>Mower Type:</label>
 								<input
 									type="text"
-									name="MowerType"
+									name="body"
 									value={this.state.MowerType}
 									onChange={this.handleTypeChange}
 									required
@@ -93,7 +93,7 @@ class Inventory extends Component {
 								<label>Inventory:</label>
 								<input
 									type="number"
-									name="Inventory"
+									name="inventory"
 									value={this.state.Inventory}
 									onChange={this.handleInventoryChange}
 									required

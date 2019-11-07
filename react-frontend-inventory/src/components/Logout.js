@@ -6,18 +6,19 @@ import Login from './Login.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 /*class Logout extends Component {
-constructor(props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {}
-
-handleSubmit = async (event) => {	
+	
+	handleSubmit = async (event) => {	
 	event.preventDefault();
 	localStorage.setItem("JWT",null);
 	window.location.href = "#/Login";
 	alert('You Are Logged Out - Please Login!')
 	const apiUrl = 'http://localhost:3001/users/logout';
 	return axios.get(apiUrl);
+	}
 };
 render () {
 	return(
@@ -25,13 +26,13 @@ render () {
 			<button type="submit" value="Submit">Logout</button>
 		</div>
 		<Router>
-		<div>
-			<nav>
-				<Link to="/Login">Login</Link>
-			</nav>
-			<Route path="/Login" component={Login} />
-		</div>
-	</Router>
+			<div>
+				<nav>
+					<Link to="/Login">Login</Link>
+				</nav>
+				<Route path="/Login" component={Login} />
+			</div>
+		</Router>
 	)
 }
 */

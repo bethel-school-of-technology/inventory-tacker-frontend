@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../App.css';
 //import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 //import { HashRouter as Router, NavLink, Link } from "react-router-dom";
+//import setAuthToken from '../Auth';
 
 class Login extends Component {
 	constructor(props) {
@@ -37,6 +38,7 @@ class Login extends Component {
 		} catch (event) {
 			alert(event.message);
 		}
+
 		const { Username, Password } = this.state;
 		const apiUrl = 'http://localhost:3001/users/login';
 		return axios
@@ -45,8 +47,8 @@ class Login extends Component {
 				Password
 			})
 			.then((res) => {
-				window.localStorage.setItem('jwt', res.token);
-				if (res.token === window.localStorage.token) {
+				localStorage.setItem('jwt', res.token);
+				if (res.token === localStorage.token) {
 					this.props.history.push('/profile');
 				}
 			});
