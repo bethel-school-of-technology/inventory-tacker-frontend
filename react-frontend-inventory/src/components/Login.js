@@ -38,7 +38,6 @@ class Login extends Component {
 		} catch (event) {
 			alert(event.message);
 		}
-
 		const { Username, Password } = this.state;
 		const apiUrl = 'http://localhost:3001/users/login';
 		return axios
@@ -47,8 +46,8 @@ class Login extends Component {
 				Password
 			})
 			.then((res) => {
-				localStorage.setItem('jwt', res.token);
-				if (res.token === localStorage.token) {
+				window.localStorage.setItem('jwt', res.token);
+				if (res.token === window.localStorage.token) {
 					this.props.history.push('/profile');
 				}
 			});
