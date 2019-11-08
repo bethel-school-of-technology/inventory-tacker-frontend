@@ -9,15 +9,16 @@ class Profile extends Component {
 		this.state = {
 			users: [],
 			isLoading: true,
-			errors: null
+			errors: null,
+			token: ''
 		};
 	}
-
+	// set token to header
 	componentDidMount() {
-		var token = localStorage.getItem('jwt');
-		axios.get('http://localhost:3001/users/profile');
-		return axios
-			.post(token)
+		let token = sessionStorage.getItem('jwt');
+		const api = 'http://localhost:3001/users/profile';
+		axios
+			.get(api, { headers: { Authorization: `Bearer ${token}` } })
 			.then((response) =>
 				response.data.results.map((user) => ({
 					FirstName: `${user.FirstName}`,
@@ -71,57 +72,4 @@ class Profile extends Component {
 	}
 }
 
-/*class Profile extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			isLoading: true,
-			users:[]
-		};
-	}
-
-	async componentDidMount() {
-		const apiUrl = await fetch(`http://localhost:3001/users/profile${this.props.users}`);
-		return axios.get(apiUrl)
-		const users = await res.json();
-        this.setState({
-            users,
-            loading: !this.state.loading
-        });
-	}
-	render() {
-		const { isLoading, users } = this.state;
-		return (
-			<React.Fragment>
-				<div>
-					{!isLoading ? (
-						users.map((user) => {
-							const { Username, LastName, Email, FirstName, UserId } = user;
-							return (
-								<div key={UserId}>
-									<p>
-										{FirstName} {LastName}
-									</p>
-									<div>
-										<p>{Email}</p>
-									</div>
-									<p>{Username}</p>
-									<hr />
-								</div>
-							);
-						})
-					) : (
-						<p>Loading...</p>
-					)}
-				</div>
-				<div>
-					<img src={require('../images/avatar.png')} height="45px" alt="Avatar" />
-					<p>Your Employee Information:</p>
-					<div />
-				</div>
-			</React.Fragment>
-		);
-	}
-}*/
 export default Profile;

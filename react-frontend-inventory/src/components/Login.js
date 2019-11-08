@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
-//import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-//import { HashRouter as Router, NavLink, Link } from "react-router-dom";
-//import setAuthToken from '../Auth';
 
 class Login extends Component {
 	constructor(props) {
@@ -47,8 +44,11 @@ class Login extends Component {
 				Password
 			})
 			.then((res) => {
-				localStorage.setItem('jwt', res.token);
-				if (res.token === localStorage.token) {
+				const token = res.token;
+				sessionStorage.setItem('jwt', token);
+				//axios.defaults.headers.common['Authorization'] = token;
+
+				if (token === sessionStorage.token) {
 					this.props.history.push('/profile');
 				}
 			});
