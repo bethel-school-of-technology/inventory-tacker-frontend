@@ -93,56 +93,56 @@ class Inventory extends Component {
       MowerType: "",
       Inventory: ""
     };
-    this.handleMowerChange = this.handleMowerChange.bind(this);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
-    this.handleInventoryChange = this.handleInventoryChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleMowerChange = this.handleMowerChange.bind(this);
+    // this.handleTypeChange = this.handleTypeChange.bind(this);
+    // this.handleInventoryChange = this.handleInventoryChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleMowerChange = event => {
-    this.setState({
-      MowerName: event.target.value
-    });
-  };
+  // handleMowerChange = event => {
+  //   this.setState({
+  //     MowerName: event.target.value
+  //   });
+  // };
 
-  handleTypeChange = event => {
-    this.setState({
-      MowerType: event.target.value
-    });
-  };
+  // handleTypeChange = event => {
+  //   this.setState({
+  //     MowerType: event.target.value
+  //   });
+  // };
 
-  handleInventoryChange = event => {
-    this.setState({
-      Inventory: event.target.value
-    });
-  };
+  // handleInventoryChange = event => {
+  //   this.setState({
+  //     Inventory: event.target.value
+  //   });
+  // };
 
-  handleSubmit = async event => {
-    event.preventDefault();
-    //Cookie.get('token');
-    //headers: {
-    //	Authorization: `JWT ${localStorage.getItem('JWT')}`
-    //};
-    try {
-      await (this.state.MowerName, this.state.MowerType, this.state.Inventory);
-      alert("New Mower added to Inventory.");
-      this.props.history.push("/inventory");
-    } catch (event) {
-      alert(event.message);
-    }
-    const { MowerName, MowerType, Inventory } = this.state;
-    console.log(MowerName);
-    return axios.post(apiUrl, {
-      MowerName,
-      MowerType,
-      Inventory
-    });
-  };
-  handleChange(key, event) {
-    this.setState({
-      [key]: event.target.value
-    });
-  }
+  // handleSubmit = async event => {
+  //   event.preventDefault();
+  //   //Cookie.get('token');
+  //   //headers: {
+  //   //	Authorization: `JWT ${localStorage.getItem('JWT')}`
+  //   //};
+  //   try {
+  //     await (this.state.MowerName, this.state.MowerType, this.state.Inventory);
+  //     alert("New Mower added to Inventory.");
+  //     this.props.history.push("/inventory");
+  //   } catch (event) {
+  //     alert(event.message);
+  //   }
+  //   const { MowerName, MowerType, Inventory } = this.state;
+  //   console.log(MowerName);
+  //   return axios.post(apiUrl, {
+  //     MowerName,
+  //     MowerType,
+  //     Inventory
+  //   });
+  // };
+  // handleChange(key, event) {
+  //   this.setState({
+  //     [key]: event.target.value
+  //   });
+  // }
   componentDidMount() {
     this.renderPosts();
   }
@@ -166,7 +166,7 @@ class Inventory extends Component {
   render() {
     return (
       <div className="grid">
-        <div className="col-2-3">
+        {/* <div className="col-2-3">
           <React.Fragment>
             <form
               id="posts"
@@ -221,7 +221,7 @@ class Inventory extends Component {
         <br />
         <br />
         <br />
-        <hr />
+        <hr /> */}
         <div>
           <h2>Inventory List:</h2>
           <p>
