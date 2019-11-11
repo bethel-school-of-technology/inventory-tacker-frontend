@@ -51,11 +51,6 @@ class Login extends Component {
 					this.props.history.push('/Inventory');
 				}
 			});
-		// 	sessionStorage.setItem('jwt', token);
-		// 	if (token) {
-		// 		this.props.history.push('/profile');
-		// 	}
-		// });
 	};
 	onChange(key, event) {
 		this.setState({
