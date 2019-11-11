@@ -48,7 +48,7 @@ class Login extends Component {
 				axios.defaults.headers.common['Authorization'] = data;
 				sessionStorage.setItem('login', data);
 				if (data) {
-					this.props.history.push('/NewStock');
+					this.props.history.push('/Inventory');
 				}
 			});
 		// 	sessionStorage.setItem('jwt', token);

@@ -28,14 +28,38 @@ class Inventory extends Component {
 		}
 		const mowers = this.state.results.map((mower) => (
 			<ul className="list" key={mower.MowerId}>
-				<div>
-					<li>
-						{mower.MowerId}
+				<li>
+					<p className="postbadgeA">{mower.MowerId}</p>
+					<p className="postbadge">
+						<strong>Mower: </strong>
 						{mower.MowerName}
-						: {mower.MowerType}
-					</li>
-					<li>{mower.Inventory}</li>
-				</div>
+					</p>
+					<strong>Type: </strong>
+					{mower.MowerType}
+				</li>
+				<li>
+					<p className="postbadgeC">
+						<strong>In Stock: </strong>
+					</p>
+					<p className="postbadgeB">{mower.Inventory}</p>
+					<button className="butupdate" type="submit" value="submit">
+						Update
+					</button>{' '}
+					: Stock quantity
+				</li>
+				<li>
+					<form
+						name="delete"
+						className="red"
+						method="POST"
+						action="http://localhost:3001/inventory/{{MowerId}}/delete"
+					>
+						<button className="postdel" type="submit" value="submit">
+							Delete
+						</button>{' '}
+						: Delete Mower from Inventory.
+					</form>
+				</li>
 			</ul>
 		));
 
