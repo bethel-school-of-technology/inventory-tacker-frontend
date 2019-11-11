@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
-
 class Login extends Component {
 	constructor(props) {
 		super(props);
@@ -44,14 +43,19 @@ class Login extends Component {
 				Password
 			})
 			.then((res) => {
-				const token = res.token;
-				sessionStorage.setItem('jwt', token);
-				//axios.defaults.headers.common['Authorization'] = token;
-
-				if (token === sessionStorage.token) {
-					this.props.history.push('/profile');
+				console.log(res);
+				const data = res.data;
+				axios.defaults.headers.common['Authorization'] = data;
+				sessionStorage.setItem('login', data);
+				if (data) {
+					this.props.history.push('/NewStock');
 				}
 			});
+		// 	sessionStorage.setItem('jwt', token);
+		// 	if (token) {
+		// 		this.props.history.push('/profile');
+		// 	}
+		// });
 	};
 	onChange(key, event) {
 		this.setState({

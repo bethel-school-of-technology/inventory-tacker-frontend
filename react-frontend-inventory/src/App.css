@@ -311,7 +311,7 @@ button.postdel:hover {
 	color: white;
 }
 .tasks li.selected {
-	background-color: #cfd8dc;
+	background-color: #59a4c4;
 	color: white;
 }
 .tasks li.selected:hover {
@@ -339,9 +339,10 @@ ul {
 }
 
 .list li:hover {
-	color: #41738b;
-	background-color: #ddd;
+	color: #41738a;
+	background-color: #e1eef5;
 	left: .1em;
+	height: 1.6em;
 }
 
 .list a {
@@ -352,7 +353,7 @@ ul {
 }
 
 .list a:hover {
-	color: #607d8b;
+	color: #447792;
 }
 .post button {
 	font-family: Arial;
@@ -368,6 +369,7 @@ ul {
 	background-color: #607d8b;
 	color: white;
 }
+
 #right {
 	float: right;
 }
