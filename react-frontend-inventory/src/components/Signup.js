@@ -68,7 +68,6 @@ class Signup extends Component {
 			this.state.Email,
 			this.state.Username,
 			this.state.Password);
-			alert('login successfull!');
 			this.props.history.push('/signup');
 		} catch (event) {
 			alert(event.message);

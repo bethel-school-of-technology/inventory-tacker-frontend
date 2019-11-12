@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
 
 class editInventory extends Component {
 	constructor(props) {
@@ -18,10 +19,32 @@ class editInventory extends Component {
 		});
 	};
 
-	handleSubmit = (event) => {
-		alert(` ${this.state.Inventory}`);
+	handleSubmit = async (event) => {
 		event.preventDefault();
+		try {
+			await this.state.Inventory;
+			this.props.history.push('/EditInventory');
+		} catch (event) {
+			alert(event.message);
+		}
+
+		const { Inventory } = this.state;
+		// sessionStorage.getItem('login', data);
+		const apiUrl = 'http://localhost:3001/inventory/:id/update';
+		return axios
+			.post(apiUrl, {
+				Inventory
+			})
+			.then((res) => {
+				console.log(res);
+				this.props.history.push('/Inventory');
+			});
 	};
+	onChange(key, event) {
+		this.setState({
+			[key]: event.target.value
+		});
+	}
 
 	render() {
 		return (
