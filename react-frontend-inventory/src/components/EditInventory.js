@@ -89,13 +89,13 @@ class editInventory extends Component {
 			<div className="grid">
 				<div className="col-3-3">
 					<React.Fragment>
-						<form id="inventory" name="inventory" method="POST" onSubmit={this.handleSubmit}>
+						<form id="inventory" name="Inventory" method="POST" onSubmit={this.handleSubmit}>
 							<div>
 								<h2>Update Inventory</h2>
 								<label>Current Inventory:</label>
 								<input
 									type="number"
-									name="inventory"
+									name="Inventory"
 									value={this.state.Inventory}
 									onChange={this.handleInventoryChange}
 									required

@@ -16,18 +16,18 @@ class Inventory extends Component {
 			MowerType: '',
 			Inventory: ''
 		};
-		this.handleChange = this.handleChange.bind(this);
+		this.handleChange = this.handleClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleChange = (event) => {
+	handleClick = (event) => {
 		this.setState({ MowerId: event.target.value });
 	};
 
 	handleSubmit = (event) => {
 		event.preventDefault();
 
-		axios.delete(`http://localhost:3001/inventory/${this.state.MowerId}`).then((res) => {
+		axios.delete(`http://localhost:3001/inventory/:id/delete/${this.state.MowerId}`).then((res) => {
 			console.log(res);
 			console.log(res.data);
 			this.props.history.push('/Inventory');
@@ -65,17 +65,12 @@ class Inventory extends Component {
 									Update
 								</button>
 							</Link>
-							: Stock quantity
+							: Stock Quantity
 						</li>
 						<li>
 							<div>
-								<form ClassName="red" onSubmit={this.handleSubmit}>
-									<button
-										className="postdel"
-										type="submit"
-										value="submit"
-										onChange={this.handleChange}
-									>
+								<form className="red" onSubmit={this.handleSubmit}>
+									<button className="postdel" type="submit" value="Submit" onClick={this.handleClick}>
 										Delete
 									</button>{' '}
 									:Delete Mower from Inventory.
