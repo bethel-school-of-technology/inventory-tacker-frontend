@@ -29,13 +29,15 @@ class Admin extends Component {
 		const users = this.state.usersFound.map((user) => (
 			<ul className="listb" key={user.UserId}>
 				<li>
-					<p className="postbadgeA">{user.UserId}</p>
-					<p className="postbadge">
-						{user.FirstName} {user.LastName}
-					</p>
-					<Link to="/EditUser">
-						<button type="submit">View</button>
-					</Link>
+					<div>
+						<p className="postbadgeA">{user.UserId}</p>
+						<p className="postbadge">
+							{user.FirstName} {user.LastName}
+						</p>
+						<Link to="/EditUser">
+							<button type="submit">View</button>
+						</Link>
+					</div>
 				</li>
 			</ul>
 		));

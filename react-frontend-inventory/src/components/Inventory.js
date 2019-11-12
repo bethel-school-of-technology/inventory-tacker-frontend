@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
+import { Link } from 'react-router-dom';
 // import Cookie from "js-cookie";
 
 const apiUrl = 'http://localhost:3001/inventory';
@@ -41,10 +42,12 @@ class Inventory extends Component {
 							<p className="postbadgeC">
 								<strong>In Stock: </strong>
 							</p>
-							<p className="postbadgeB">{post.Inventory}</p>
-							<button className="butupdate" type="submit" value="submit">
-								Update
-							</button>
+							<Link to="/EditInventory">
+								<p className="postbadgeB">{post.Inventory}</p>
+								<button className="butupdate" type="submit" value="submit">
+									Update
+								</button>
+							</Link>
 							: Stock quantity
 						</li>
 						<li>
@@ -128,11 +131,10 @@ class Inventory extends Component {
         <hr /> */}
 				<div className="col-3-3">
 					<h2>Inventory List:</h2>
-					<p>
-						<div>
-							<ul className="list-group list-group-flush">{this.state.Posts}</ul>
-						</div>
-					</p>
+
+					<div>
+						<ul className="list-group list-group-flush">{this.state.Posts}</ul>
+					</div>
 				</div>
 			</div>
 		);
