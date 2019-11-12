@@ -74,14 +74,19 @@ class Signup extends Component {
 		}
 		const { EmployeeNumber, FirstName, LastName, Email, Username, Password } = this.state;
 		const apiUrl = 'http://localhost:3001/users/signup';
-		return axios.post(apiUrl, {
-			EmployeeNumber,
-			FirstName,
-			LastName,
-			Email,
-			Username,
-			Password
-		});
+		return axios
+			.post(apiUrl, {
+				EmployeeNumber,
+				FirstName,
+				LastName,
+				Email,
+				Username,
+				Password
+			})
+			.then((res) => {
+				alert('Sign up successfull, Please Login.');
+				this.props.history.push('/login');
+			});
 	};
 	handleChange(key, event) {
 		this.setState({

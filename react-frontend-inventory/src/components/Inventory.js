@@ -11,11 +11,28 @@ class Inventory extends Component {
 		super(props);
 
 		this.state = {
+			MowerId: '',
 			MowerName: '',
 			MowerType: '',
 			Inventory: ''
 		};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
+	handleChange = (event) => {
+		this.setState({ MowerId: event.target.value });
+	};
+
+	handleSubmit = (event) => {
+		event.preventDefault();
+
+		axios.delete(`http://localhost:3001/inventory/${this.state.MowerId}`).then((res) => {
+			console.log(res);
+			console.log(res.data);
+			this.props.history.push('/Inventory');
+		});
+	};
 
 	componentDidMount() {
 		this.renderPosts();
@@ -51,17 +68,19 @@ class Inventory extends Component {
 							: Stock quantity
 						</li>
 						<li>
-							<form
-								name="delete"
-								className="red"
-								method="POST"
-								action="http://localhost:3001/inventory/{{MowerId}}/delete"
-							>
-								<button className="postdel" type="submit" value="submit">
-									Delete
-								</button>
-								: Delete Mower from Inventory.
-							</form>
+							<div>
+								<form ClassName="red" onSubmit={this.handleSubmit}>
+									<button
+										className="postdel"
+										type="submit"
+										value="submit"
+										onChange={this.handleChange}
+									>
+										Delete
+									</button>{' '}
+									:Delete Mower from Inventory.
+								</form>
+							</div>
 						</li>
 					</ul>
 				))
@@ -73,62 +92,6 @@ class Inventory extends Component {
 	render() {
 		return (
 			<div className="grid">
-				{/* <div className="col-2-3">
-          <React.Fragment>
-            <form
-              id="posts"
-              name="inventory"
-              method="POST"
-              onSubmit={this.handleSubmit}
-            >
-              <div>
-                <h2>New Stock Item</h2>
-                <label>Mower Name:</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={this.state.MowerName}
-                  onChange={this.handleMowerChange}
-                  required
-                />
-              </div>
-              <div>
-                <label>Mower Type:</label>
-                <input
-                  type="text"
-                  name="body"
-                  value={this.state.MowerType}
-                  onChange={this.handleTypeChange}
-                  required
-                />
-              </div>
-              <div>
-                <label>Inventory:</label>
-                <input
-                  type="number"
-                  name="inventory"
-                  value={this.state.Inventory}
-                  onChange={this.handleInventoryChange}
-                  required
-                />
-              </div>
-              <br />
-              <div>
-                <button type="submit" value="Submit">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </React.Fragment>
-        </div>
-        <div className="col-1-3">
-          <img src={require("../images/mower2.png")} width="auto" alt="Mower" />
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <hr /> */}
 				<div className="col-3-3">
 					<h2>Inventory List:</h2>
 

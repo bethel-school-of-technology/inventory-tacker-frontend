@@ -42,7 +42,7 @@ class editUser extends Component {
 					<p>Employee #: {user.EmployeeNumber}</p>
 					<p>Admin: {user.Admin}</p>
 				</li>
-				<form name="delete" class="red" method="POST" action="/users/admin/editUser/{{UserId}}/delete">
+				<form name="delete" className="red" method="POST" action="/users/admin/editUser/{{UserId}}/delete">
 					<button class="postdel" type="submit">
 						Delete Employee
 					</button>
