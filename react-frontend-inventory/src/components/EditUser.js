@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:3001/users/admin/editUser/:id';
+const apiUrl = 'http://localhost:3001/users/admin/editUser/{UserId}';
 class editUser extends Component {
 	constructor(props) {
 		super(props);
@@ -18,16 +18,17 @@ class editUser extends Component {
 	}
 
 	componentDidMount() {
-		this.renderPosts();
+		this.renderUsers();
 	}
 
-	renderPosts = async () => {
+	renderUsers = async () => {
+		let UserId = this.state.UserId;
 		try {
-			let res = await axios.get(apiUrl, {});
-			let user = res.data;
+			let res = await axios.get(apiUrl, { UserId });
+			let users = res.data;
 			// this will re render the view with new data
 			this.setState({
-				User: user.map((user, i) => (
+				Users: users.map((user, i) => (
 					<ul key={i} className="list-group-item">
 						<li>
 							<p> Id: {user.UserId}</p>
@@ -54,14 +55,18 @@ class editUser extends Component {
 						<img src={require('../images/avatar.png')} height="45px" alt="Avatar" />
 						<h2>Employee Information:</h2>
 					</div>
-
 					<div className="col-2-3">
-						<ul className="list-group list-group-flush">{this.state.Posts}</ul>
+						<ul className="list-group list-group-flush">{this.state.Users}</ul>
 					</div>
 				</div>
 				<div>
-					<form name="delete" className="red" method="POST" action="/users/admin/editUser/{{UserId}}/delete">
-						<button class="postdel" type="submit">
+					<form
+						name="delete"
+						className="red"
+						method="POST"
+						action="http://localhost:3001/users/admin/editUser/{{UserId}}/delete"
+					>
+						<button className="postdel" type="submit">
 							Delete Employee
 						</button>
 					</form>

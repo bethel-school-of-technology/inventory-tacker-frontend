@@ -26,9 +26,7 @@ class Inventory extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-
 		axios.delete(`http://localhost:3001/inventory/:id/delete/${this.state.MowerId}`).then((res) => {
-			console.log(res);
 			console.log(res.data);
 			this.props.history.push('/Inventory');
 		});

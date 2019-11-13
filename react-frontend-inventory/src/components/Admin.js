@@ -27,7 +27,7 @@ class Admin extends Component {
 			return <div>Failed to fetch data from server</div>;
 		}
 		const users = this.state.usersFound.map((user) => (
-			<ul className="listb" key={user.UserId}>
+			<ul key={user.UserId}>
 				<li>
 					<div>
 						<p className="postbadgeA">{user.UserId}</p>
