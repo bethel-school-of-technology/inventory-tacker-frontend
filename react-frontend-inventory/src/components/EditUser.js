@@ -1,56 +1,74 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
-class editUser extends Component {
-	state = {
-		usersFound: []
-	};
 
-	fetchUsersFound = () => {
-		var encodedURI = 'http://localhost:3001/users/admin/editUser/:id';
-		return axios.get(encodedURI).then((response) => {
-			this.setState(() => {
-				return {
-					usersFound: response.data
-				};
-			});
-		});
-	};
+const apiUrl = 'http://localhost:3001/users/admin/editUser/:id';
+class editUser extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			UserId: '',
+			FirstName: '',
+			LastName: '',
+			Username: '',
+			EmployeeNumber: '',
+			Email: '',
+			Admin: ''
+		};
+	}
 
 	componentDidMount() {
-		this.fetchUsersFound();
+		this.renderPosts();
 	}
-	handleSubmit = (event) => {
-		alert('deleted');
-		event.preventDefault();
+
+	renderPosts = async () => {
+		try {
+			let res = await axios.get(apiUrl, {});
+			let user = res.data;
+			// this will re render the view with new data
+			this.setState({
+				User: user.map((user, i) => (
+					<ul key={i} className="list-group-item">
+						<li>
+							<p> Id: {user.UserId}</p>
+							<p>
+								Name: {user.FirstName} {user.LastName}
+							</p>
+							<p>Username: {user.Userame}</p>
+							<p>Email: {user.Email}</p>
+							<p>Employee #: {user.EmployeeNumber}</p>
+							<p>Admin: {user.Admin}</p>
+						</li>
+					</ul>
+				))
+			});
+		} catch (err) {
+			console.log(err);
+		}
 	};
 	render() {
-		console.log(this.state.usersFound);
-		if (this.state.usersFound.length === 0) {
-			return <div>Failed to fetch data from server</div>;
-		}
+		return (
+			<div className="grid">
+				<div className="col-1-3">
+					<div>
+						<img src={require('../images/avatar.png')} height="45px" alt="Avatar" />
+						<h2>Employee Information:</h2>
+					</div>
 
-		const users = this.state.usersFound.map((user) => (
-			<ul className="list" key={user.UserId}>
-				<li>
-					<p> Id: {user.UserId}</p>
-					<p>
-						Name: {user.FirstName} {user.LastName}
-					</p>
-					<p>Username: {user.Userame}</p>
-					<p>Email: {user.Email}</p>
-					<p>Employee #: {user.EmployeeNumber}</p>
-					<p>Admin: {user.Admin}</p>
-				</li>
-				<form name="delete" className="red" method="POST" action="/users/admin/editUser/{{UserId}}/delete">
-					<button class="postdel" type="submit">
-						Delete Employee
-					</button>
-				</form>
-			</ul>
-		));
-
-		return <div>{users}</div>;
+					<div className="col-2-3">
+						<ul className="list-group list-group-flush">{this.state.Posts}</ul>
+					</div>
+				</div>
+				<div>
+					<form name="delete" className="red" method="POST" action="/users/admin/editUser/{{UserId}}/delete">
+						<button class="postdel" type="submit">
+							Delete Employee
+						</button>
+					</form>
+				</div>
+			</div>
+		);
 	}
 }
+
 export default editUser;
