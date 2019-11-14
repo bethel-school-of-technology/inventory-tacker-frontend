@@ -9,6 +9,7 @@ const apiUrl = 'http://localhost:3001/inventory';
 class Inventory extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			MowerId: '',
 			MowerName: '',
@@ -17,6 +18,7 @@ class Inventory extends Component {
 		};
 		this.handleChange = this.handleClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.deletePosts = this.deletePosts.bind(this);
 	}
 
 	handleClick = (event) => {
@@ -25,11 +27,19 @@ class Inventory extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
+
 		axios.delete(`http://localhost:3001/inventory/:id/delete/${this.state.MowerId}`).then((res) => {
+			console.log(res);
 			console.log(res.data);
 			this.props.history.push('/Inventory');
 		});
 	};
+
+	deletePosts(MowerId) {
+		this.setState((prevState) => ({
+			items: prevState.items.filter((item) => item.mowerId !== MowerId)
+		}));
+	}
 
 	componentDidMount() {
 		this.renderPosts();
@@ -66,8 +76,13 @@ class Inventory extends Component {
 						</li>
 						<li>
 							<div>
-								<form className="red" onSubmit={this.handleSubmit}>
-									<button className="postdel" type="submit" value="Submit" onClick={this.handleClick}>
+								<form className="red" onDelete={this.deletePosts}>
+									<button
+										className="postdel"
+										type="submit"
+										value="Submit"
+										onDelete={this.deletePosts}
+									>
 										Delete
 									</button>{' '}
 									:Delete Mower from Inventory.
