@@ -9,7 +9,6 @@ const apiUrl = 'http://localhost:3001/inventory';
 class Inventory extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			MowerId: '',
 			MowerName: '',
